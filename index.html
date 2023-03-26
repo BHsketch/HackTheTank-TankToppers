@@ -9,6 +9,101 @@
     <script src="load_list.js" defer></script> 
 </head>
 <body>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <div id="sankey_multiple" style="width: 900px; height: 300px;"></div>
+
+    <script type="text/javascript">
+
+var studlist = document.getElementById('studlist');
+
+var studentslist = ['U1', 'U23', 'U45', 'U47', 'U72'];
+
+var toggle = true;
+
+        google.charts.load("current", { packages: ["sankey"] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'From');
+            data.addColumn('string', 'To');
+            data.addColumn('number', 'Weight');
+            data.addRows([
+                ['Views', 'T&C Enquiry', 3.8],
+                ['Views', 'Bookmarked', 1.6],
+                ['Views', 'Peer Review', 1.8],
+                ['T&C Enquiry', 'Visited Sponsor Website', 1.8],
+                ['Bookmarked', 'Applied', 1.4],
+                ['Peer Review', 'Downloaded Rulebook', 1.8],
+                ['Downloaded Rulebook', 'Applied', 1.4],
+                ['T&C Enquiry', 'Follow-Up Enquiry', 0.4],
+                ['Applied', 'Documents Upload', 0.4],
+                ['Documents Upload', 'Follow-up Email', 0.4],
+                ['Documents Upload', 'Reupload Documents', 0.4],
+            ]);
+        // Set chart options
+        var colors = ['#a6cee3', '#b2df8a', '#fb9a99', '#fdbf6f',
+                '#cab2d6', '#ffff99', '#1f78b4', '#33a02c'];
+
+            var options = {
+                height: 400,
+                sankey: {
+                    node: {
+                        colors: colors,
+                        label: {
+                            fontSize: 12
+                        }
+                    },
+                    link: {
+                        colorMode: 'gradient',
+                        colors: colors
+                    },
+                    iterations: 100,
+                }
+            };
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.Sankey(document.getElementById('sankey_multiple'));
+            chart.draw(data, options);
+        }
+
+        google.visualization.events.addListener(chart, 'select', function() {
+        // var selectedItem = chart.getSelection()[0];
+        showDivs();
+        });
+
+  chart.draw(data, options);
+
+  function showDivs() {
+    toggle = !toggle;
+    if(toggle == false)
+    {
+        studlist.innerHTML = '';
+    }else{
+        for(stud in studentslist)
+        {
+            var temp = document.createElement('div');
+            temp.classList.add('transparentdiv');
+            studlist.appendChild(temp);
+
+            var intemp = document.createElement('div');
+            intemp.classList.add('studlistdiv');
+            intemp.textContent = studentslist[stud];
+            temp.appendChild(intemp);
+
+            var contact1 = document.createElement('div');
+            contact1.classList.add('contact');
+            temp.appendChild(contact1);
+
+            var contact2 = document.createElement('div');
+            contact2.classList.add('contact');
+            temp.appendChild(contact2);
+            
+        }
+    }
+  }
+    </script>
+
     <div id = "node">
         <h1>100</h1>
     </div>
@@ -16,5 +111,9 @@
     <div id = "studlist">
 
     </div>
+
+    <script>
+
+    </script>
 </body>
 </html>
