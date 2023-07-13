@@ -65,6 +65,9 @@ VALUES ('U13', 'Alia Shah', 'alia@example.com', 'pwd46', '1996-03-19', 'Delhi', 
 INSERT INTO users (user_id, user_name, email, password, date_of_birth, address, phone_number)
 VALUES ('U14', 'Ananya Sharma', 'anan@example.com', 'pwd46', '1996-03-19', 'UP', '1090799432');
 
+INSERT INTO users (user_id, user_name, email, password, date_of_birth, address, phone_number)
+VALUES ('U15', 'Shubham Sharma', 'sh@example.com', 'pwd4', '1996-01-19', 'UP', '1090799432');
+
 
 UPDATE users
 SET user_id = 'U10'
@@ -140,6 +143,9 @@ VALUES ('U11', 's1');
 
 INSERT INTO user_scholarship (user_id, scholarship_id)
 VALUES ('U12', 's1');
+
+INSERT INTO user_scholarship (user_id, scholarship_id)
+VALUES ('U14', 's1');
 
 
 CREATE TABLE pages (
@@ -320,6 +326,12 @@ INSERT INTO user_scholarship_page (user_id, scholarship_id, page_id, step_number
 VALUES ('U2', 's2', 'p6', 3);
 
 INSERT INTO user_scholarship_page (user_id, scholarship_id, page_id, step_number)
+VALUES ('U2', 's2', 'p10', 4);
+
+INSERT INTO user_scholarship_page (user_id, scholarship_id, page_id, step_number)
+VALUES ('U2', 's2', 'p12', 5);
+
+INSERT INTO user_scholarship_page (user_id, scholarship_id, page_id, step_number)
 VALUES ('U14', NULL, 'p1', 0);
 
 INSERT INTO user_scholarship_page (user_id, scholarship_id, page_id, step_number)
@@ -339,5 +351,27 @@ VALUES ('U14', 's1', 'p12', 5);
 
 INSERT INTO user_scholarship_page (user_id, scholarship_id, page_id, step_number)
 VALUES ('U14', 's1', 'p14', 6);
+
+INSERT INTO user_scholarship_page (user_id, scholarship_id, page_id, step_number)
+VALUES ('U15', NULL, 'p1', 0);
+
+INSERT INTO user_scholarship_page (user_id, scholarship_id, page_id, step_number)
+VALUES ('U15', NULL, 'p2', 1);
+
+INSERT INTO user_scholarship_page (user_id, scholarship_id, page_id, step_number)
+VALUES ('U15', NULL, 'p4', 2);
+
+INSERT INTO user_scholarship_page (user_id, scholarship_id, page_id, step_number)
+VALUES ('U15', 's1', 'p6', 3);
+
+INSERT INTO user_scholarship_page (user_id, scholarship_id, page_id, step_number)
+VALUES ('U15', 's1', 'p10', 4);
+
+INSERT INTO user_scholarship_page (user_id, scholarship_id, page_id, step_number)
+VALUES ('U15', 's1', 'p12', 5);
+
+INSERT INTO user_scholarship_page (user_id, scholarship_id, page_id, step_number)
+VALUES ('U15', 's1', 'p13', 6);
+
 
 

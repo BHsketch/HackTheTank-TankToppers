@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Button, Stack } from "@mui/material";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import ReactFlow, {
   useNodesState,
@@ -30,58 +32,7 @@ export default function Graph({ data }) {
   // console.log(data.submittedUsers);
   const [open, setOpen] = useState(false);
   const { scholarshipId } = useParams();
-  const [scholarshipCount, setScholarshipCount] = useState(0);
   // console.log(scholarshipId);
-  // console.log(data);
-  // const [initialState, setInitialState] = useState({
-  //   scholarshipCount: 0,
-  //   bookmarkCount: 0,
-  //   appliedCount: 0,
-  //   termsCount: 0,
-  //   ineligibleCount: 0,
-  //   incompleteCount: 0,
-  //   submittedCount: 0,
-  //   failedCount: 0,
-  //   successCount: 0,
-  // });
-
-  // const fetchScholarshipCount = async (scholarshipId) => {
-  //   try {
-  //     const response = await axios.get(
-  //       `http://localhost:8800/scholarshipCount/${scholarshipId}`
-  //     );
-  //     const ans = response.data.scholarshipCount;
-  //     console.log(ans);
-  //     // console.log(initialState);
-  //     setInitialState((prevState) => ({
-  //       ...prevState,
-  //       scholarshipCount: ans,
-  //     }));
-
-  //     console.log(initialState);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   fetchScholarshipCount(scholarshipId); // Replace "s1" with the desired scholarshipId
-  // }, []);
-  // useEffect(() => {
-  //   const fetchScholarshipCount = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `http://localhost:8800/scholarshipCount/${scholarshipId}`
-  //       );
-  //       const ans = response.data.scholarshipCount;
-  //       console.log(ans);
-  //       setScholarshipCount(ans);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  //   fetchScholarshipCount();
-  // }, [scholarshipId]);
 
   const initialNodes = [
     {
@@ -90,9 +41,6 @@ export default function Graph({ data }) {
       data: { label: `Login Page ${data.loginCount}` },
       style: {
         ...commonStyles,
-      },
-      onNodeClick: () => {
-        setOpen(true);
       },
       type: "input",
       sourcePosition: "right",
@@ -266,6 +214,9 @@ export default function Graph({ data }) {
       },
       targetPosition: "left",
       sourcePosition: "right",
+      onclick: () => {
+        return setOpen(true);
+      },
     },
     {
       id: "13",
@@ -409,7 +360,7 @@ export default function Graph({ data }) {
       id: "e",
       source: "4",
       target: "6",
-      // animated: "true",
+      animated: "true",
       label: `Scholarship ${scholarshipId}`,
       style: {
         ...customEdgeStyles,
@@ -420,6 +371,7 @@ export default function Graph({ data }) {
 
   const rfStyle = {
     backgroundColor: "#D0C0F7",
+    position: "relative",
   };
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
@@ -440,6 +392,20 @@ export default function Graph({ data }) {
           onConnect={onConnect}
           style={rfStyle}
         />
+        {open && (
+          <>
+            <button
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "30%",
+              }}
+            >
+              hi
+            </button>
+          </>
+        )}
       </div>
     </>
   );
