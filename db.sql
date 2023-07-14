@@ -13,6 +13,9 @@ CREATE TABLE users (
   registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+ALTER TABLE users MODIFY COLUMN date_of_birth DATE DEFAULT '2001-01-03';
+
+
 -- Insert query 1
 INSERT INTO users (user_id, user_name, email, password, date_of_birth, address, phone_number)
 VALUES ('S1', 'Rahul Sharma', 'rahul@example.com', 'pass123', '1995-07-15', 'Delhi', '1234567890');
