@@ -43,12 +43,13 @@ app.post("/signup", (req, res) => {
     console.log(nextUserId);
 
     // Proceed with the insertion
-    const q = `INSERT INTO users (user_id, user_name, phone_number, address, email, password) VALUES (?, ?, ?, ?, ?, ?)`;
+    const q = `INSERT INTO users (user_id, user_name, phone_number, address,gender, email, password) VALUES (?, ?, ?, ?, ?,?, ?)`;
     const values = [
       nextUserId,
       req.body.user_name,
       req.body.phone_number,
       req.body.address,
+      req.body.gender,
       req.body.email,
       req.body.password,
     ];
@@ -96,19 +97,20 @@ app.post("/login", (req, res) => {
 app.post("/home", (req, res) => {
   const { userId, scholarshipId, pageId, step } = req.body;
 
-  const insertQuery = `INSERT INTO user_scholarship_page (user_id, scholarship_id, page_id, step_number)
-                       VALUES (?, ?, ?, ?)`;
-  const insertValues = [userId, scholarshipId, pageId, step];
+  const replaceQuery = `REPLACE INTO user_scholarship_page (user_id, scholarship_id, page_id, step_number)
+                        VALUES (?, ?, ?, ?)`;
+  const replaceValues = [userId, scholarshipId, pageId, step];
 
-  db.query(insertQuery, insertValues, (err, result) => {
+  db.query(replaceQuery, replaceValues, (err, result) => {
     if (err) {
       console.error(err);
       return res.status(500).json({
-        error: "Error inserting data into user_scholarship_page table.",
+        error: "Error replacing data in user_scholarship_page table.",
       });
     }
-    console.log("Record inserted successfully");
-    return res.json({ success: true, message: "Record inserted successfully" });
+
+    console.log("Record replaced successfully");
+    return res.json({ success: true, message: "Record replaced successfully" });
   });
 });
 

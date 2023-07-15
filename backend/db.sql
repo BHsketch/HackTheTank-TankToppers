@@ -15,6 +15,9 @@ CREATE TABLE users (
 
 ALTER TABLE users MODIFY COLUMN date_of_birth DATE DEFAULT '2001-01-03';
 
+ALTER TABLE users ADD COLUMN gender VARCHAR(10) NULL;
+
+
 
 -- Insert query 1
 INSERT INTO users (user_id, user_name, email, password, date_of_birth, address, phone_number)
@@ -218,13 +221,19 @@ CREATE TABLE user_scholarship_page (
   scholarship_id VARCHAR(5),
   page_id VARCHAR(5),
   step_number INT,
-  PRIMARY KEY (user_id, page_id),
+  PRIMARY KEY (user_id, step_number),
+  UNIQUE KEY (user_id, step_number, scholarship_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id),
   FOREIGN KEY (page_id) REFERENCES pages(page_id),
-  CONSTRAINT fk_scholarship FOREIGN KEY (scholarship_id) REFERENCES scholarships(scholarship_id)
+  CONSTRAINT fk_scholarship FOREIGN KEY (scholarship_id)
+    REFERENCES scholarships(scholarship_id)
     ON UPDATE CASCADE
     ON DELETE SET NULL
 );
+
+
+DROP TABLE user_scholarship_page;
+
 
 
 -- Insert queries for user_scholarship_page table

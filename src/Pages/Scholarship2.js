@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Scholarship1() {
   useEffect(() => {
@@ -26,7 +27,20 @@ function Scholarship1() {
     insertUserScholarshipPage();
   }, []);
 
-  return <div>Scholarship2</div>;
+  return (
+    <div>
+      {" "}
+      <div>
+        <Link to="/bookmark">Bookmark</Link>
+        <br></br>
+        <Link to="/apply">apply</Link>
+        <br></br>
+        <Link to="/ineligible">ineligible</Link>
+        <br></br>
+        <Link to="/terms">terms</Link>
+      </div>
+    </div>
+  );
 }
 
 export default Scholarship1;

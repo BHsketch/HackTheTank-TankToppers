@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Validation from "./SignupValidation";
+// import Form from "react-bootstrap/Form";
 import axios from "axios";
 
 function Signup() {
@@ -9,6 +10,7 @@ function Signup() {
     user_name: "",
     phone_number: "",
     address: "",
+    gender: "",
     email: "",
     password: "",
   });
@@ -19,7 +21,7 @@ function Signup() {
     setValues((prev) => {
       return {
         ...prev,
-        [e.target.name]: [e.target.value],
+        [e.target.name]: e.target.value,
       };
     });
   };
@@ -79,14 +81,28 @@ function Signup() {
             <label htmlFor="address">
               <strong>Address</strong>
             </label>
-            <input
-              type="text"
-              placeholder="Please enter your address"
-              className="form-control rounded-0"
+            <select
+              className="form-select"
+              id="addressSelect"
               onChange={handleInput}
               name="address"
               required
-            />
+            >
+              <option value="">Select State</option>
+              <option value="gujarat">Gujarat</option>
+              <option value="maharashtra">Maharashtra</option>
+              <option value="karnataka">Karnataka</option>
+              <option value="tamilnadu">Tamil Nadu</option>
+              <option value="rajasthan">Rajasthan</option>
+              <option value="uttarpradesh">Uttar Pradesh</option>
+              <option value="punjab">Punjab</option>
+              <option value="westbengal">West Bengal</option>
+              <option value="madhyapradesh">Madhya Pradesh</option>
+              <option value="bihar">Bihar</option>
+              <option value="andhrapradesh">Andhra Pradesh</option>
+              <option value="delhi">New Delhi</option>
+              <option value="telangana">Telangana</option>
+            </select>
             {errors.address && (
               <span className="text-danger">{errors.address}</span>
             )}
@@ -107,7 +123,23 @@ function Signup() {
               <span className="text-danger">{errors.email}</span>
             )}
           </div>
-          <div className="mb-3">
+          <div>
+            <label for="genderSelect" class="form-label">
+              <strong>Gender</strong>
+            </label>
+            <select
+              className="form-select"
+              id="genderSelect"
+              onChange={handleInput}
+              name="gender"
+              required
+            >
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div className="mb-3 mt-3">
             <label htmlFor="password">
               <strong>Password</strong>
             </label>
@@ -137,13 +169,3 @@ function Signup() {
 }
 
 export default Signup;
-
-// setErrors(Validation(values));
-// if (
-//   errors.user_name === "" &&
-//   errors.phone_number === "" &&
-//   errors.address === "" &&
-//   errors.email === "" &&
-//   errors.password === ""
-// ) {
-// }
