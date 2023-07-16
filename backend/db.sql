@@ -21,43 +21,43 @@ ALTER TABLE users ADD COLUMN gender VARCHAR(10) NULL;
 
 -- Insert query 1
 INSERT INTO users (user_id, user_name, email, password, date_of_birth, address, phone_number)
-VALUES ('S1', 'Rahul Sharma', 'rahul@example.com', 'pass123', '1995-07-15', 'Delhi', '1234567890');
+VALUES ('U1', 'Rahul Sharma', 'rahul@example.com', 'pass123', '1995-07-15', 'Delhi', '1234567890');
 
 -- Insert query 2
 INSERT INTO users (user_id, user_name, email, password, date_of_birth, address, phone_number)
-VALUES ('S2', 'Neha Patel', 'neha@example.com', 'password1', '1990-02-28', 'Gujarat', '9876543210');
+VALUES ('U2', 'Neha Patel', 'neha@example.com', 'password1', '1990-02-28', 'Gujarat', '9876543210');
 
 -- Insert query 3
 INSERT INTO users (user_id, user_name, email, password, date_of_birth, address, phone_number)
-VALUES ('S3', 'Sandeep Verma', 'sandeep@example.com', 'pass456', '1988-12-10', 'Uttar Pradesh', '8765432109');
+VALUES ('U3', 'Sandeep Verma', 'sandeep@example.com', 'pass456', '1988-12-10', 'Uttar Pradesh', '8765432109');
 
 -- Insert query 4
 INSERT INTO users (user_id, user_name, email, password, date_of_birth, address, phone_number)
-VALUES ('S4', 'Pooja Singh', 'pooja@example.com', '123pass', '1992-06-22', 'Bihar', '7654321098');
+VALUES ('U4', 'Pooja Singh', 'pooja@example.com', '123pass', '1992-06-22', 'Bihar', '7654321098');
 
 -- Insert query 5
 INSERT INTO users (user_id, user_name, email, password, date_of_birth, address, phone_number)
-VALUES ('S5', 'Amit Gupta', 'amit@example.com', 'pass789', '1997-09-05', 'Rajasthan', '6543210987');
+VALUES ('U5', 'Amit Gupta', 'amit@example.com', 'pass789', '1997-09-05', 'Rajasthan', '6543210987');
 
 -- Insert query 6
 INSERT INTO users (user_id, user_name, email, password, date_of_birth, address, phone_number)
-VALUES ('S6', 'Priya Patel', 'priya@example.com', 'pwd123', '1994-04-18', 'Gujarat', '5432109876');
+VALUES ('U6', 'Priya Patel', 'priya@example.com', 'pwd123', '1994-04-18', 'Gujarat', '5432109876');
 
 -- Insert query 7
 INSERT INTO users (user_id, user_name, email, password, date_of_birth, address, phone_number)
-VALUES ('S7', 'Sachin Sharma', 'sachin@example.com', 'pass789', '1991-11-08', 'Haryana', '4321098765');
+VALUES ('U7', 'Sachin Sharma', 'sachin@example.com', 'pass789', '1991-11-08', 'Haryana', '4321098765');
 
 -- Insert query 8
 INSERT INTO users (user_id, user_name, email, password, date_of_birth, address, phone_number)
-VALUES ('S8', 'Anjali Verma', 'anjali@example.com', 'abc123', '1989-03-12', 'Uttar Pradesh', '3210987654');
+VALUES ('U8', 'Anjali Verma', 'anjali@example.com', 'abc123', '1989-03-12', 'Uttar Pradesh', '3210987654');
 
 -- Insert query 9
 INSERT INTO users (user_id, user_name, email, password, date_of_birth, address, phone_number)
-VALUES ('S9', 'Rajesh Kumar', 'rajesh@example.com', 'pass123', '1993-08-30', 'Maharashtra', '2109876543');
+VALUES ('U9', 'Rajesh Kumar', 'rajesh@example.com', 'pass123', '1993-08-30', 'Maharashtra', '2109876543');
 
 -- Insert query 10
 INSERT INTO users (user_id, user_name, email, password, date_of_birth, address, phone_number)
-VALUES ('S10', 'Riya Singh', 'riya@example.com', 'pwd456', '1996-01-25', 'Delhi', '1098765432');
+VALUES ('U10', 'Riya Singh', 'riya@example.com', 'pwd456', '1996-01-25', 'Delhi', '1098765432');
 
 INSERT INTO users (user_id, user_name, email, password, date_of_birth, address, phone_number)
 VALUES ('U11', 'Virat Sharma', 'virat@example.com', 'pwd456', '1996-01-29', 'Bihar', '1098799432');
@@ -73,11 +73,6 @@ VALUES ('U14', 'Ananya Sharma', 'anan@example.com', 'pwd46', '1996-03-19', 'UP',
 
 INSERT INTO users (user_id, user_name, email, password, date_of_birth, address, phone_number)
 VALUES ('U15', 'Shubham Sharma', 'sh@example.com', 'pwd4', '1996-01-19', 'UP', '1090799432');
-
-
-UPDATE users
-SET user_id = 'U10'
-WHERE user_id = 'S10';
 
 CREATE TABLE scholarships (
   scholarship_id VARCHAR(5) PRIMARY KEY,
