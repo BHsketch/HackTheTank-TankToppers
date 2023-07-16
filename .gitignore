@@ -11,6 +11,9 @@
 # production
 /build
 
+# user-journey-react: Carried over from DynamicLabelUpdate branch. Don't track
+/user-journey-react
+
 # misc
 .DS_Store
 .env.local
