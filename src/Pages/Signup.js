@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Validation from "./SignupValidation";
 // import Form from "react-bootstrap/Form";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function Signup() {
   const navigate = useNavigate();
@@ -34,7 +35,11 @@ function Signup() {
       .then((res) => {
         console.log(res);
         if (res.data.success) {
+          toast.success("Successfully signed up!");
           navigate("/login");
+        } else {
+          // console.log(res.data);
+          toast.error(res.data.error);
         }
       })
       .catch((err) => console.log(err));

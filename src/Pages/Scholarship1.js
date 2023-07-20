@@ -17,7 +17,15 @@ function Scholarship1() {
           pageId,
           step,
         });
-        console.log(response.data); // Logging the API response
+        const response1 = await axios.post(
+          "http://localhost:8800/applyScholarship",
+          {
+            user_id: userId, // Use "user_id" instead of "userId"
+            scholarship_id: scholarshipId, // Use "scholarship_id" instead of "scholarshipId"
+          }
+        );
+        // console.log(response.data); // Logging the API response
+        console.log(response1.data); // Logging the API response
       } catch (error) {
         console.error(error);
       }

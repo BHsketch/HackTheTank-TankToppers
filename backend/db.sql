@@ -101,7 +101,7 @@ CREATE TABLE user_scholarship (
 
 -- Insert query 1
 INSERT INTO user_scholarship (user_id, scholarship_id)
-VALUES ('U1', 's1');
+VALUES ('U13', 's2');
 
 -- Insert query 2
 INSERT INTO user_scholarship (user_id, scholarship_id)
@@ -226,6 +226,7 @@ CREATE TABLE user_scholarship_page (
     ON DELETE SET NULL
 );
 
+drop table user_scholarship_page;
 
 DROP TABLE user_scholarship_page;
 

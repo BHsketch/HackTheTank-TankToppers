@@ -42,28 +42,45 @@ app.post("/signup", (req, res) => {
     let nextUserId = incrementUserId(maxUserId);
     console.log(nextUserId);
 
-    // Proceed with the insertion
-    const q = `INSERT INTO users (user_id, user_name, phone_number, address,gender, email, password) VALUES (?, ?, ?, ?, ?,?, ?)`;
-    const values = [
-      nextUserId,
-      req.body.user_name,
-      req.body.phone_number,
-      req.body.address,
-      req.body.gender,
-      req.body.email,
-      req.body.password,
-    ];
-
-    db.query(q, values, (err, result) => {
+    // Check if the email already exists in the database
+    const checkEmailQuery = "SELECT * FROM users WHERE email = ?";
+    db.query(checkEmailQuery, [req.body.email], (err, emailResult) => {
       if (err) {
         console.error(err);
-        return res.json({
-          success: false,
-          error: "Error inserting data into database.",
+        return res.json({ success: false, error: "Error checking email." });
+      }
+
+      if (emailResult.length > 0) {
+        // Email already exists, return an error message or toast
+        return res.json({ success: false, error: "Email already exists." });
+      } else {
+        // Proceed with the insertion
+        const q = `INSERT INTO users (user_id, user_name, phone_number, address, gender, email, password) VALUES (?, ?, ?, ?, ?,?, ?)`;
+        const values = [
+          nextUserId,
+          req.body.user_name,
+          req.body.phone_number,
+          req.body.address,
+          req.body.gender,
+          req.body.email,
+          req.body.password,
+        ];
+
+        db.query(q, values, (err, result) => {
+          if (err) {
+            console.error(err);
+            return res.json({
+              success: false,
+              error: "Error inserting data into the database.",
+            });
+          }
+          console.log("Data inserted successfully");
+          return res.json({
+            success: true,
+            message: "Data inserted successfully",
+          });
         });
       }
-      console.log("Data inserted successfully");
-      return res.json({ success: true, message: "Data inserted successfully" });
     });
   });
 });
@@ -127,6 +144,45 @@ app.get("/users", (req, res) => {
       console.log(data[0].user_count);
       return res.json(data);
     }
+  });
+});
+
+// POST route to add user-scholarship data to the user_scholarship table
+app.post("/applyScholarship", (req, res) => {
+  const { user_id, scholarship_id } = req.body;
+  console.log(user_id);
+  console.log(scholarship_id);
+
+  // Check if the provided user_id and scholarship_id are valid
+  if (!user_id || !scholarship_id) {
+    return res.json({
+      success: false,
+      error: "Invalid user_id or scholarship_id.",
+    });
+  }
+
+  // Proceed with the insertion
+  const insertQuery =
+    "INSERT INTO user_scholarship (user_id, scholarship_id) VALUES (?, ?)";
+  const values = [user_id, scholarship_id];
+
+  db.query(insertQuery, values, (err, result) => {
+    if (err) {
+      console.error(
+        "Error inserting data into the user_scholarship table:",
+        err
+      );
+      return res.json({
+        success: false,
+        error: "Error inserting data into the user_scholarship table.",
+      });
+    }
+
+    console.log("Data inserted into user_scholarship table successfully");
+    return res.json({
+      success: true,
+      message: "Data inserted into user_scholarship table successfully",
+    });
   });
 });
 
@@ -560,6 +616,43 @@ app.get("/:scholarshipId/success", (req, res) => {
 
       return res.json({ users, userCount });
     });
+  });
+});
+
+app.get("/allUsers", (req, res) => {
+  const getAllUsersQuery = "SELECT * FROM users";
+
+  db.query(getAllUsersQuery, (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({
+        error: "Error fetching data from users table.",
+      });
+    }
+
+    // If the query is successful, send the user details as a response
+    // console.log(result);
+    return res.json(result);
+  });
+});
+app.get("/user_scholarship_data", (req, res) => {
+  const getAllUserScholarshipDataQuery = `
+    SELECT usp.user_id, usp.scholarship_id, u.*
+    FROM user_scholarship usp
+    JOIN users u ON usp.user_id = u.user_id
+  `;
+
+  db.query(getAllUserScholarshipDataQuery, (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({
+        error:
+          "Error fetching data from user_scholarship_page and users tables.",
+      });
+    }
+
+    // If the query is successful, send the combined data as a response
+    return res.json(result);
   });
 });
 

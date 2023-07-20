@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Validation from "./LoginValidation";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function Login() {
   const navigate = useNavigate();
@@ -32,10 +33,15 @@ function Login() {
         if (res.data.success) {
           const user_id = res.data.user_id;
           localStorage.setItem("user_id", user_id);
+          toast.success("Logged in!");
           navigate("/home");
+        } else {
+          toast.error("Invalid email or password, try again!");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

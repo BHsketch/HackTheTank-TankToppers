@@ -87,7 +87,13 @@ function Intermediate() {
         const success = await axios.get(
           `http://localhost:8800/${scholarshipId}/success`
         );
-        console.log(submitted.data.users);
+        const allUsersData = await axios.get(`http://localhost:8800/allUsers`);
+        const allUserScholarshipData = await axios.get(
+          `http://localhost:8800/user_scholarship_data`
+        );
+        // console.log(submitted.data.users);
+        console.log(allUsersData.data);
+        console.log(allUserScholarshipData.data);
         setInitialStateCount({
           ...initialStateCount,
           userCount: response1,
