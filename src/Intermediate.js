@@ -7,6 +7,8 @@ import Graph from "./Graph";
 import { Button, Drawer, Stack } from "@mui/material";
 import BasicModal from "./BasicModal";
 import { AiOutlineMenuFold } from "react-icons/ai";
+import UsersModal from "./UsersModal";
+import UsersScholarshipModal from "./UserScholarshipModal";
 
 function Intermediate() {
   const { scholarshipId } = useParams();
@@ -49,6 +51,8 @@ function Intermediate() {
     incompleteUsers: [],
     failedUsers: [],
     successUsers: [],
+    allUsers: [],
+    userScholarship: [],
   });
 
   useEffect(() => {
@@ -122,6 +126,8 @@ function Intermediate() {
           incompleteUsers: incomplete.data.users,
           failedUsers: failed.data.users,
           successUsers: success.data.users,
+          allUsers: allUsersData.data,
+          userScholarship: allUserScholarshipData.data,
         });
       } catch (error) {
         console.log(error);
@@ -222,6 +228,17 @@ function Intermediate() {
     ));
   };
 
+  const [usersModalOpen, setUsersModalOpen] = useState(false);
+  const handleOpenUsersModal = () => setUsersModalOpen(true);
+  const handleCloseUsersModal = () => setUsersModalOpen(false);
+
+  const [usersScholarshipModalOpen, setUsersScholarshipModalOpen] =
+    useState(false);
+  const handleOpenUsersScholarshipModal = () =>
+    setUsersScholarshipModalOpen(true);
+  const handleCloseUsersScholarshipModal = () =>
+    setUsersScholarshipModalOpen(false);
+
   return (
     <div>
       {initialStateCount.userCount !== 0 ? (
@@ -247,6 +264,46 @@ function Intermediate() {
       </Drawer>
 
       {renderModals()}
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={handleOpenUsersModal}
+        style={{
+          position: "fixed",
+          top: "10px",
+          left: "10px",
+          fontSize: "15px",
+        }}
+      >
+        Users details
+      </Button>
+      {setUsersModalOpen && (
+        <UsersModal
+          open={usersModalOpen}
+          handleClose={handleCloseUsersModal}
+          data={initialStateUser.allUsers}
+        />
+      )}
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={handleOpenUsersScholarshipModal}
+        style={{
+          position: "fixed",
+          top: "90px",
+          left: "10px",
+          fontSize: "15px",
+        }}
+      >
+        Users-Scholarship Details
+      </Button>
+      {setUsersScholarshipModalOpen && (
+        <UsersScholarshipModal
+          open={usersScholarshipModalOpen}
+          handleClose={handleCloseUsersScholarshipModal}
+          data={initialStateUser.userScholarship}
+        />
+      )}
     </div>
   );
 }
