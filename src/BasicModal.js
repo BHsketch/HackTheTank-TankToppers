@@ -22,7 +22,13 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal({ open, handleOpen, handleClose, data }) {
+export default function BasicModal({
+  open,
+  handleOpen,
+  handleClose,
+  data,
+  heading,
+}) {
   // const [open, setOpen] = React.useState(false);
   // handleOpen = () => s
   // const handleClose = () => setOpen(false);
@@ -37,6 +43,7 @@ export default function BasicModal({ open, handleOpen, handleClose, data }) {
       >
         <Box sx={style}>
           <TableContainer>
+            <h4>{heading}:</h4>
             <Table>
               <TableHead>
                 <TableRow>

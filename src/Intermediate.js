@@ -147,41 +147,49 @@ function Intermediate() {
       buttonText: "Applied Application",
       modalData: initialStateUser.appliedUsers,
       isOpen: false,
+      heading: "Users which applied",
     },
     {
       buttonText: "Bookmarked Application",
       modalData: initialStateUser.bookmarkUsers,
       isOpen: false,
+      heading: "Users which bookmarked",
     },
     {
       buttonText: "Terms & Conditions",
       modalData: initialStateUser.termsUsers,
       isOpen: false,
+      heading: "Users which observed terms and conditions",
     },
     {
       buttonText: "Ineligible",
       modalData: initialStateUser.ineligibleUsers,
       isOpen: false,
+      heading: "Users which were ineligible",
     },
     {
       buttonText: "Submitted Application",
       modalData: initialStateUser.submittedUsers,
       isOpen: false,
+      heading: "Users which submitted their application",
     },
     {
       buttonText: "Incomplete Application",
       modalData: initialStateUser.incompleteUsers,
       isOpen: false,
+      heading: "Users which left incomplete application",
     },
     {
       buttonText: "Failed Document Verification",
       modalData: initialStateUser.failedUsers,
       isOpen: false,
+      heading: "Users which failed document verification",
     },
     {
       buttonText: "Successfully Applied",
       modalData: initialStateUser.successUsers,
       isOpen: false,
+      heading: "Users which successfully applied",
     },
   ];
 
@@ -224,6 +232,7 @@ function Intermediate() {
         handleOpen={() => handleModalOpen(index)}
         handleClose={() => handleModalClose(index)}
         data={config.modalData}
+        heading={config.heading}
       />
     ));
   };
