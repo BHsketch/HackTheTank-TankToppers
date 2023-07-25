@@ -26,7 +26,7 @@ function Fail() {
     insertUserScholarshipPage();
   }, []);
 
-  return <div>Fail</div>;
+  return <h1 style={{ color: "white" }}>Fail❌</h1>;
 }
 
 export default Fail;

@@ -26,7 +26,11 @@ function Incomplete() {
     insertUserScholarshipPage();
   }, []);
 
-  return <div>Incomplete</div>;
+  return (
+    <h1 style={{ color: "white" }}>
+      Your Application is incomplete, complete is ASAP!🏃
+    </h1>
+  );
 }
 
 export default Incomplete;

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./Styling.css";
 
 function Submit() {
   useEffect(() => {
@@ -27,10 +28,13 @@ function Submit() {
   }, []);
 
   return (
-    <div>
-      <Link to="/fail">Document verification failed</Link>
-      <br></br>
-      <Link to="/success">Successfully applied for the scholarship</Link>
+    <div className="flexParent">
+      <div className="link_parent">
+        <Link to="/fail">Document verification failed</Link>
+      </div>
+      <div className="link_parent">
+        <Link to="/success">Successfully applied for the scholarship</Link>
+      </div>
     </div>
   );
 }

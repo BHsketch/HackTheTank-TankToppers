@@ -1,0 +1,12 @@
+.black {
+  /* background-color: black; */
+  background-image: url("../bg5.jpg");
+  background-size: cover;
+  height: 100vh;
+}
+.gridLayout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 80px;
+}

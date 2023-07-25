@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./Styling.css";
 
 function Success() {
   useEffect(() => {
@@ -26,7 +27,7 @@ function Success() {
     insertUserScholarshipPage();
   }, []);
 
-  return <div>Success</div>;
+  return <h1 style={{ color: "white" }}>Success✅😊</h1>;
 }
 
 export default Success;

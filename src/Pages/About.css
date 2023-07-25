@@ -1,0 +1,12 @@
+.about {
+  position: relative;
+  height: 100vh;
+  background-image: url("../bg3.jpg");
+  background-size: cover;
+}
+
+.custom__card {
+  display: flex;
+  justify-content: center;
+  transform: translateX(-16rem);
+}

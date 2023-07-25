@@ -1,6 +1,7 @@
 // import React from "react";
 import React, { useEffect } from "react";
 import axios from "axios";
+import "./Styling.css";
 
 function Ineligible() {
   useEffect(() => {
@@ -26,7 +27,12 @@ function Ineligible() {
     insertUserScholarshipPage();
   }, []);
 
-  return <div>Ineligible</div>;
+  return (
+    <div className="parent">
+      {/* <h2>You have successfully bookmarked this scholarship!</h2> */}
+      <h2>Sorry but you are ineligible for this scholarship!😔 </h2>
+    </div>
+  );
 }
 
 export default Ineligible;

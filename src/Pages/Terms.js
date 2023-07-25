@@ -1,6 +1,7 @@
 // import React from "react";
 import React, { useEffect } from "react";
 import axios from "axios";
+import "./Styling.css";
 
 function Terms() {
   useEffect(() => {
@@ -26,7 +27,11 @@ function Terms() {
     insertUserScholarshipPage();
   }, []);
 
-  return <div>Terms</div>;
+  return (
+    <div className="parent">
+      <h2>Observe the Terms and Conditions properly!</h2>
+    </div>
+  );
 }
 
 export default Terms;

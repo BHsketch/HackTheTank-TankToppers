@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./Styling.css";
 
 function Apply() {
   useEffect(() => {
@@ -28,10 +29,19 @@ function Apply() {
   }, []);
 
   return (
-    <div>
-      <Link to="/incomplete">Incomplete Application</Link>
-      <br></br>
-      <Link to="/submit">Submitted Application</Link>
+    <div className="flexParent">
+      <div className="link_parent">
+        <Link to="/incomplete" style={{ textDecoration: "none" }}>
+          Incomplete Application
+        </Link>
+      </div>
+
+      {/* <br></br> */}
+      <div className="link_parent">
+        <Link to="/submit" style={{ textDecoration: "none" }}>
+          Submitted Application
+        </Link>
+      </div>
     </div>
   );
 }

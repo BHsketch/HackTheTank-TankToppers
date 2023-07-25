@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import CardCustom from "./CardCustom";
+import "./Scholar.css";
 
 function Scholarship1() {
   useEffect(() => {
@@ -36,14 +38,43 @@ function Scholarship1() {
   }, []);
 
   return (
-    <div>
-      <Link to="/bookmark">Bookmark</Link>
-      <br></br>
-      <Link to="/apply">apply</Link>
-      <br></br>
-      <Link to="/ineligible">ineligible</Link>
-      <br></br>
-      <Link to="/terms">terms</Link>
+    <div className="black">
+      <div className="gridLayout">
+        <Link to="/bookmark" style={{ textDecoration: "none" }}>
+          <CardCustom
+            heading="Bookmark this Scholarship"
+            content="By bookmarking scholarships, you can curate a personalized list of opportunities tailored to your aspirations. Whether you need more time to research or are waiting for the perfect moment to apply, the bookmarked scholarships will be readily available whenever you need them."
+          />
+        </Link>
+
+        <Link to="/apply" style={{ textDecoration: "none" }}>
+          <CardCustom
+            heading="Apply for this scholarship"
+            // content="By bookmarking scholarships, you can curate a personalized list of opportunities tailored to your aspirations. Whether you need more time to research or are waiting for the perfect moment to apply, the bookmarked scholarships will be readily available whenever you need them."
+            content=" 
+            Once you find a scholarship that aligns with your aspirations, click on the Apply button located below the scholarship details.
+
+You will be directed to the application page, where you can review the scholarship requirements and access the application 
+            
+            "
+          />
+        </Link>
+
+        <Link to="/ineligible" style={{ textDecoration: "none" }}>
+          <CardCustom
+            heading="Ineligible for this Scholarship"
+            // content="By bookmarking scholarships, you can curate a personalized list of opportunities tailored to your aspirations. Whether you need more time to research or are waiting for the perfect moment to apply, the bookmarked scholarships will be readily available whenever you need them."
+            content="Sorry to Inform you but you dont meet the criteria for this scholarship!"
+          />
+        </Link>
+        <Link to="/terms" style={{ textDecoration: "none" }}>
+          <CardCustom
+            heading="View Terms and Conditions"
+            // content="By bookmarking scholarships, you can curate a personalized list of opportunities tailored to your aspirations. Whether you need more time to research or are waiting for the perfect moment to apply, the bookmarked scholarships will be readily available whenever you need them."
+            content="View the terms and conditions of this scholarship to check whether you are eligible or not"
+          />
+        </Link>
+      </div>
     </div>
   );
 }

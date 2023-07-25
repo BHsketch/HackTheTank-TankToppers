@@ -1,0 +1,13 @@
+.contact {
+  background-image: url("../bg2.jpg");
+  /* background-color: black; */
+  height: 100vh;
+  background-size: cover;
+}
+.parent123 {
+  /* margin: 3rem; */
+  /* width: 40%; */
+  display: flex;
+  justify-content: center;
+  transform: translateX(-23.5rem);
+}

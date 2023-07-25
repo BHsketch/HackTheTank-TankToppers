@@ -1,6 +1,7 @@
 // import React from "react";
 import React, { useEffect } from "react";
 import axios from "axios";
+import "./Styling.css";
 
 function Bookmark() {
   useEffect(() => {
@@ -26,7 +27,11 @@ function Bookmark() {
     insertUserScholarshipPage();
   }, []);
 
-  return <div>Bookmark</div>;
+  return (
+    <div className="parent">
+      <h2>You have successfully bookmarked this scholarship!🔖</h2>
+    </div>
+  );
 }
 
 export default Bookmark;
