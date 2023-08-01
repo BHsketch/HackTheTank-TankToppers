@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Validation from "./LoginValidation";
 import axios from "axios";
+import "./login.css";
 import { toast } from "react-toastify";
+import logo from "./images/logo.png";
 
 function Login() {
   const navigate = useNavigate();
@@ -45,10 +47,67 @@ function Login() {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center bg-primary vh-100">
-      <div className="bg-white p-3 rounded w-25">
-        <h1>Login</h1>
-        <form onSubmit={handleSubmit}>
+    <body>
+      <div className="outer">
+        <div className="logindiv">
+          <div className="title">
+            <div className="logo">
+              <img src={logo} alt="logo" height="100px" width="100px" />
+            </div>
+            <div className="companynamediv">
+              <p className="companyName">Scholify</p>
+            </div>
+          </div>
+
+          <hr />
+
+          <form onSubmit={handleSubmit}>
+            <div className="info">
+              <label htmlFor="email">
+                <p>Email</p>
+              </label>
+              <input
+                type="email"
+                name="email"
+                onChange={handleInput}
+                placeholder="Type your email here"
+              />
+              {errors.email && (
+                <span className="text-danger">{errors.email}</span>
+              )}
+            </div>
+
+            <div className="info">
+              <label htmlFor="password">
+                <p>Password</p>
+              </label>
+              <input
+                type="password"
+                name="password"
+                onChange={handleInput}
+                placeholder="Type your password here"
+              />
+              {errors.password && (
+                <span className="text-danger">{errors.password}</span>
+              )}
+            </div>
+
+            <div className="button">
+              <div className="buttonlink">
+                <button type="submit">
+                  <p>Sign in</p>
+                </button>
+
+                <button>
+                  <Link to="/signup" style={{ textDecoration: "none" }}>
+                    <p>Create Account</p>
+                  </Link>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          {/* <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="email">
               <strong>Email</strong>
@@ -79,6 +138,7 @@ function Login() {
               <span className="text-danger">{errors.password}</span>
             )}
           </div>
+
           <button className="btn btn-success w-100" type="submit">
             Log In
           </button>
@@ -86,9 +146,10 @@ function Login() {
           <Link to="/signup" className="btn btn-default border w-100">
             Create Account
           </Link>
-        </form>
+        </form> */}
+        </div>
       </div>
-    </div>
+    </body>
   );
 }
 

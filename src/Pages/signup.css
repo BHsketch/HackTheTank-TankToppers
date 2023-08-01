@@ -1,0 +1,201 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Hubballi&family=Montserrat:wght@200&family=Poppins:wght@200;300;400;700&display=swap");
+/*font-family: 'Montserrat', sans-serif;
+font-family:'Poppins', sans-serif;*/
+*/ body {
+  background-color: rgb(255, 242, 225) !important;
+  /* font-family: "Montserrat", sans-serif !important; */
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+hr {
+  border-width: 1px;
+  border-color: rgba(255, 249, 240, 0.623);
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.outer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.logindiv {
+  position: absolute;
+  margin: 0px;
+  top: 40px;
+
+  background-color: rgb(46, 46, 46);
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 50px #313131;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: linear-gradient(45deg, #1b1b1b, #4b4a48);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+/*
+.logo{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    margin-right:15px;
+}
+*/
+
+.title {
+  display: flex;
+  font-size: 45px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logo {
+  padding: 0px;
+  margin: 0px;
+}
+
+.companyName {
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+
+  font-weight: 200;
+  color: white;
+}
+
+input {
+  padding: 15px !important;
+  width: 100%;
+  height: 25px;
+  border-radius: 5px;
+  border-width: 0px;
+  box-shadow: 5px 5px 10px #252525;
+}
+
+.infos {
+  padding: 0px;
+}
+
+.button .buttonlink {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.infos p {
+  color: white;
+  margin-top: 10px;
+}
+
+.button button {
+  background-color: bisque;
+  width: 100% !important;
+  border-radius: 15px;
+  border-width: 0px;
+  box-shadow: 0px 0px 20px #ffffff48;
+  margin-bottom: 15px;
+}
+
+.button p {
+  padding: 0px;
+  margin: 10px;
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  text-decoration: none !important;
+  color: black !important;
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.button button:hover {
+  background-color: rgb(232, 192, 143);
+}
+
+nav {
+  margin: 0px;
+  background-color: #252525;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+nav .navleft {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+nav .companyName {
+  font-size: 30px;
+  margin-left: 10px;
+}
+
+nav .profile {
+  display: inline-block;
+  border-radius: 50%;
+  background-color: rgb(201, 157, 99);
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+}
+
+nav .links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav .links a {
+  margin-left: 25px;
+  margin-right: 25px;
+  text-decoration: none;
+  color: white;
+}
+
+.scholarships {
+  padding: 35px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.card {
+  background-color: rgb(255, 255, 244);
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  box-shadow: 10px 10px 25px #8e8e8e;
+}
+
+.cardimg {
+  border-radius: 20px;
+  border: rgb(201, 157, 99) solid 2px;
+}
+
+.cardname p {
+  text-align: center;
+  color: #332a21;
+  font-weight: bold;
+}
