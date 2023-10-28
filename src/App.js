@@ -28,23 +28,18 @@ import Fail from "./Pages/Fail";
 import Success from "./Pages/Success";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AdminDashboard from "./Pages/AdminDashboard";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <h1>User Journey Graph</h1>
-              </>
-            }
-          />
+          <Route path="/" element={<Login />} />
           <Route path="/:scholarshipId" element={<Intermediate />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />

@@ -19,33 +19,49 @@ function Login() {
     setValues((prev) => {
       return {
         ...prev,
-        [e.target.name]: [e.target.value],
+        [e.target.name]: e.target.value,
       };
     });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setErrors(Validation(values));
-
-    console.log("clicked");
-    axios
-      .post("http://localhost:8800/login", values)
-      .then((res) => {
-        console.log(res);
-        if (res.data.success) {
-          const user_id = res.data.user_id;
-          localStorage.setItem("user_id", user_id);
-          toast.success("Logged in!");
-          navigate("/home");
-        } else {
-          toast.error("Invalid email or password, try again!");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // Assuming that you want to check if email is 'admin@scholify.com' and password is 'scholify' for admin access.
+    if (
+      values.email === "admin@scholify.com" &&
+      values.password === "scholify"
+    ) {
+      navigate("/admin");
+    } else {
+      axios
+        .post("http://localhost:8800/login", values)
+        .then((res) => {
+          if (res.data.success) {
+            const user_id = res.data.user_id;
+            localStorage.setItem("user_id", user_id);
+            toast.success("Logged in!");
+            console.log(values.email);
+            console.log(values.password);
+            console.log(values.email === "admin@scholify.com");
+            console.log(values.password === "scholify");
+            if (
+              values.email === "admin@scholify.com" &&
+              values.password === "scholify"
+            ) {
+              console.log("here");
+              navigate("/admin");
+            } else {
+              console.log("there");
+              navigate("/home");
+            }
+          } else {
+            toast.error("Invalid email or password, try again!");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
-
   return (
     <body>
       <div className="outer">
